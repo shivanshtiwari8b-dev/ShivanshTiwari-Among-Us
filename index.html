@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EMERGENCY MEETING — An Among Us Night by SPARK</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0a0d1c;--card:#141935;--ink:#f4f1ff;--mut:#a9aed0;--red:#f45858;--yel:#ffd166;--grn:#8dd982;--blu:#67c9f5;--pur:#b8a5f5;--cream:#ffe5d1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.sg{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.05;margin:0}
+canvas#stars{position:fixed;inset:0;z-index:-1}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:28px;padding:14px 5vw;background:#0a0d1ccc;backdrop-filter:blur(10px)}
+nav b{font:700 20px "Space Grotesk";margin-right:auto;display:flex;align-items:center;gap:8px}
+nav a{color:var(--mut);text-decoration:none;font-weight:500}nav a:hover{color:var(--ink)}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 16px "Space Grotesk";color:#1a0b0b;background:var(--red);padding:14px 26px;border-radius:14px;box-shadow:0 5px 0 #a42f3a;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 7px 0 #a42f3a}.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #a42f3a}
+.btn.g{background:var(--grn);box-shadow:0 5px 0 #4a8f48}.btn.g:hover{box-shadow:0 7px 0 #4a8f48}
+section{padding:90px 5vw;max-width:1280px;margin:auto}
+.tag{font:500 13px "Space Grotesk";letter-spacing:.2em;text-transform:uppercase;color:var(--yel)}
+h2{font-size:clamp(34px,4.5vw,60px);margin:10px 0 36px}
+.crew{width:100%;height:auto;display:block}
+/* hero */
+.hero{min-height:calc(100vh - 60px);display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:40px;position:relative}
+.hero h1{font-size:clamp(54px,8.2vw,128px);letter-spacing:-.03em}
+.hero h1 span{color:var(--red);display:block;animation:flick 4s infinite}
+@keyframes flick{0%,90%,100%{opacity:1}92%{opacity:.4}94%{opacity:1}96%{opacity:.5}}
+.hero p.lead{font-size:20px;color:var(--mut);max-width:520px;margin:22px 0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}
+.chips i{font-style:normal;font:500 14px "Space Grotesk";padding:8px 14px;border-radius:99px;border:1.5px solid #ffffff30;background:#ffffff0d}
+.chips i:nth-child(1){border-color:var(--yel)}.chips i:nth-child(2){border-color:var(--blu)}.chips i:nth-child(3){border-color:var(--grn)}
+.cd{display:flex;gap:12px;margin-top:34px}
+.cd div{background:var(--card);border:1px solid #ffffff1c;border-radius:14px;padding:12px 16px;min-width:78px;text-align:center}
+.cd b{display:block;font:700 32px "Space Grotesk";color:var(--yel)}.cd small{color:var(--mut);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.stage{position:relative;aspect-ratio:1;max-width:520px;margin:auto;width:100%}
+.stage .c{position:absolute;animation:float 6s ease-in-out infinite}
+.c1{width:54%;left:23%;top:18%;color:var(--red);z-index:2}.c2{width:30%;left:0;top:50%;color:var(--blu);animation-delay:-2s!important}
+.c3{width:26%;right:2%;top:8%;color:var(--yel);animation-delay:-4s!important}.c4{width:22%;right:8%;bottom:6%;color:var(--grn);animation-delay:-1s!important}
+@keyframes float{50%{transform:translateY(-16px) rotate(4deg)}}
+.bigbtn{position:absolute;left:50%;bottom:0;transform:translateX(-50%);z-index:3;text-align:center}
+.bigbtn button{width:104px;height:104px;border-radius:50%;border:8px solid #7a1d28;background:radial-gradient(circle at 35% 30%,#ff8a8a,var(--red) 60%);cursor:pointer;box-shadow:0 8px 0 #5a1420,0 0 40px #f4585877;animation:pulse 1.8s infinite;font:700 13px "Space Grotesk";color:#3a0a10;transition:transform .1s}
+.bigbtn button:active{transform:translateY(6px);box-shadow:0 2px 0 #5a1420}
+@keyframes pulse{50%{box-shadow:0 8px 0 #5a1420,0 0 70px #f45858cc}}
+.bigbtn small{display:block;margin-top:14px;color:var(--mut);font-size:13px}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);border:1px solid #ffffff18;border-radius:22px;padding:30px;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-8px) rotate(-.6deg);border-color:var(--c)}
+.card .ic{font-size:38px;width:68px;height:68px;border-radius:18px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 22%,transparent);margin-bottom:18px}
+.card h3{font-size:26px;margin-bottom:8px;color:var(--c)}.card p{margin:0;color:var(--mut)}
+/* timeline */
+.tl{position:relative;display:grid;gap:18px;padding-left:34px}
+.tl::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:4px;border-radius:4px;background:linear-gradient(var(--red),var(--yel),var(--grn),var(--blu),var(--pur))}
+.tl div{position:relative;background:var(--card);border-radius:16px;padding:18px 24px;display:grid;grid-template-columns:90px 1fr;gap:18px;align-items:center;border:1px solid #ffffff14}
+.tl div::before{content:"";position:absolute;left:-31px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px var(--bg)}
+.tl b{font:700 24px "Space Grotesk";color:var(--c)}.tl h3{font-size:20px}.tl p{margin:2px 0 0;color:var(--mut);font-size:15px}
+/* tasks */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.panel{background:var(--card);border:1px solid #ffffff1c;border-radius:24px;padding:28px}
+.panel h3{font-size:26px;margin-bottom:6px}.panel p{color:var(--mut);margin:0 0 14px}
+#wires{width:100%;background:#0c1024;border-radius:16px;border:2px solid #ffffff1a}
+#wires circle{cursor:pointer;transition:r .15s}#wires circle:hover{r:15}
+.status{font:700 16px "Space Grotesk";margin-top:12px;min-height:26px;color:var(--yel)}
+.votes{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.votes button{background:#0c1024;border:2px solid #ffffff1c;border-radius:16px;padding:12px 6px;color:var(--ink);cursor:pointer;font:500 14px Inter;transition:.2s}
+.votes button:hover{border-color:var(--yel);transform:translateY(-4px)}.votes svg{width:70%;margin:0 auto 4px}
+/* form */
+form{display:grid;gap:16px}
+label{font:500 14px "Space Grotesk";color:var(--mut);display:grid;gap:6px}
+input,select{background:#0c1024;border:2px solid #ffffff22;border-radius:12px;color:var(--ink);padding:13px 15px;font:inherit}
+input:focus,select:focus{outline:0;border-color:var(--blu)}
+.sw{display:flex;gap:10px;flex-wrap:wrap}.sw button{width:38px;height:38px;border-radius:50%;border:3px solid transparent;cursor:pointer;background:var(--k)}
+.sw button.on{border-color:#fff;transform:scale(1.18)}
+.pass{border-radius:24px;padding:26px;background:linear-gradient(135deg,var(--cream),#ffd3b0);color:#1b1d3a;position:relative;overflow:hidden;display:none;animation:pop .5s}
+.pass.show{display:block}@keyframes pop{from{transform:scale(.8) rotate(-4deg);opacity:0}}
+.pass .row{display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center}
+.pass .tag{color:#d0314a}.pass h3{font-size:34px;word-break:break-word}.pass code{font:700 15px "Space Grotesk"}
+.pass::after{content:"CREWMATE";position:absolute;right:-30px;top:18px;rotate:35deg;background:var(--red);color:#fff;font:700 12px "Space Grotesk";padding:4px 40px;letter-spacing:.2em}
+.ph{color:var(--mut);text-align:center;padding:30px}
+/* faq */
+details{background:var(--card);border-radius:16px;padding:18px 24px;margin-bottom:12px;border:1px solid #ffffff14}
+summary{font:700 19px "Space Grotesk";cursor:pointer}details p{color:var(--mut);margin:10px 0 0}
+footer{text-align:center;color:var(--mut);padding:50px 5vw 70px;font-size:14px}
+/* meeting overlay */
+#meet{position:fixed;inset:0;z-index:50;background:#000d;display:none;place-items:center}
+#meet.on{display:grid}
+.mt{background:#1b2347;border:4px solid var(--blu);border-radius:26px;padding:34px;max-width:760px;width:92%;text-align:center;position:relative;overflow:hidden}
+.mt h2{margin:6px 0 10px;color:var(--red);font-size:clamp(34px,5vw,56px)}
+.siren{position:fixed;inset:0;background:var(--red);opacity:0;pointer-events:none;z-index:49}
+.siren.on{animation:fl .5s 4}@keyframes fl{50%{opacity:.5}}
+#ej{height:200px;position:relative;display:none;background:#020410;border-radius:16px;margin-top:16px;overflow:hidden}
+#ej .fl{position:absolute;width:90px;top:50px;left:-100px;animation:eject 2.6s linear forwards}
+@keyframes eject{to{left:105%;transform:rotate(1080deg) scale(.3)}}
+#ej p{position:absolute;bottom:10px;width:100%;margin:0;font:700 22px "Space Grotesk"}
+.x{position:absolute;right:16px;top:12px;background:none;border:0;color:var(--mut);font-size:26px;cursor:pointer}
+/* responsive */
+@media(max-width:900px){nav a{display:none}.hero,.two,.grid{grid-template-columns:1fr}.hero{padding-top:30px}section{padding:60px 5vw}.cd div{min-width:64px}.tl div{grid-template-columns:1fr;gap:4px}.pass .row{grid-template-columns:90px 1fr}.votes{grid-template-columns:repeat(2,1fr)}.stage{max-width:380px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="cm" viewBox="0 0 100 120"><rect x="2" y="42" width="18" height="46" rx="9" fill="currentColor"/><rect x="2" y="42" width="18" height="46" rx="9" fill="#0004"/>
+<path d="M26 40a24 24 0 0 1 48 0v52a8 8 0 0 1-8 8h-9a6 6 0 0 1-6-6v-8h-10v8a6 6 0 0 1-6 6h-9a8 8 0 0 1-0-8z" fill="currentColor" stroke="#0a0d1c" stroke-width="4"/>
+<path d="M27 70q10 8 46 0v22a8 8 0 0 1-8 8h-9a6 6 0 0 1-6-6v-8h-10v8a6 6 0 0 1-6 6h-9a8 8 0 0 1-8-8z" fill="#0003"/>
+<rect x="36" y="22" width="44" height="26" rx="13" fill="#9fe3ff" stroke="#0a0d1c" stroke-width="4"/><ellipse cx="68" cy="30" rx="8" ry="3.5" fill="#fff" opacity=".8"/></symbol></defs></svg>
+<canvas id="stars"></canvas><div class="siren" id="siren"></div>
+<nav><b><svg width="30" height="34" style="color:var(--red)"><use href="#cm"/></svg>SPARK × SUS</b><a href="#about">The Mission</a><a href="#plan">Flight Plan</a><a href="#tasks">Tasks</a><a href="#join">Board</a><a href="#faq">FAQ</a><a class="btn" style="padding:9px 18px;box-shadow:0 3px 0 #a42f3a" href="#join">Join the crew</a></nav>
+
+<section class="hero">
+<div><div class="tag">SPARK presents · Event 001</div>
+<h1>Emergency <span>Meeting.</span></h1>
+<p class="lead">An online Among Us game night. Complete tasks, call meetings, accuse your best friend. One impostor per lobby — free entry, beginners welcome.</p>
+<div class="chips"><i>📅 28 Nov 2026 · 7 PM IST</i><i>💻 Online + Discord</i><i>🎟 Free entry</i></div>
+<a class="btn" href="#join">Register now →</a> <a class="btn g" href="#tasks">Try a task</a>
+<div class="cd" id="cd"><div><b>--</b><small>Days</small></div><div><b>--</b><small>Hours</small></div><div><b>--</b><small>Mins</small></div><div><b>--</b><small>Secs</small></div></div></div>
+<div class="stage"><svg class="c c1 crew"><use href="#cm"/></svg><svg class="c c2 crew"><use href="#cm"/></svg><svg class="c c3 crew"><use href="#cm"/></svg><svg class="c c4 crew"><use href="#cm"/></svg>
+<div class="bigbtn"><button id="mbtn">EMER-<br>GENCY</button><small>Go on. Press it.</small></div></div>
+</section>
+
+<section id="about"><div class="tag">01 · Briefing</div><h2>What’s happening?</h2>
+<div class="grid">
+<div class="card" style="--c:var(--blu)"><div class="ic">🛰️</div><h3>Play live</h3><p>Three hours of Among Us in organised lobbies, hosted on Discord voice. Solo or with a squad — we’ll seat you.</p></div>
+<div class="card" style="--c:var(--yel)"><div class="ic">🕵️</div><h3>Lie well</h3><p>Impostors sabotage, crewmates investigate. Awards for Best Detective, Master of Alibis and Most Chaotic Crewmate.</p></div>
+<div class="card" style="--c:var(--grn)"><div class="ic">🎓</div><h3>Zero experience</h3><p>New here? A 15-minute briefing and practice round come first. Nobody gets ejected before they learn the buttons.</p></div>
+</div></section>
+
+<section id="plan"><div class="tag">02 · Navigation</div><h2>Your evening, accounted for.</h2>
+<div class="tl">
+<div style="--c:var(--red)"><b>19:00</b><span><h3>All aboard</h3><p>Check in on Discord, meet your crew, find your lobby.</p></span></div>
+<div style="--c:var(--yel)"><b>19:15</b><span><h3>Know the drill</h3><p>Rules briefing and a warm-up practice round.</p></span></div>
+<div style="--c:var(--grn)"><b>19:30</b><span><h3>Let the suspicion begin</h3><p>Main rounds. Real friendships, fictional betrayals.</p></span></div>
+<div style="--c:var(--blu)"><b>20:30</b><span><h3>Refuel &amp; regroup</h3><p>Short break, then a lobby shuffle.</p></span></div>
+<div style="--c:var(--pur)"><b>21:45</b><span><h3>Awards &amp; alibis</h3><p>Trophies handed out. Mission ends at 22:00.</p></span></div>
+</div></section>
+
+<section id="tasks"><div class="tag">03 · Warm-up</div><h2>Do a task. Then eject someone.</h2>
+<div class="two">
+<div class="panel"><h3>Fix Wiring</h3><p>Tap a wire on the left, then its matching colour on the right.</p>
+<svg id="wires" viewBox="0 0 320 200"></svg><div class="status" id="ws">0 / 3 connected</div></div>
+<div class="panel"><h3>Who’s the impostor?</h3><p>Cast your vote. Choose wisely — or don’t.</p>
+<div class="votes" id="vv"></div><div class="status" style="color:var(--mut)">Pssst… the button in the hero does this too.</div></div>
+</div></section>
+
+<section id="join"><div class="tag">04 · Boarding</div><h2>Claim your crew pass.</h2>
+<div class="two"><div class="panel"><form id="f">
+<label>Your name<input id="n" required maxlength="24" placeholder="e.g. Aryan Sharma"></label>
+<label>Email<input id="e" type="email" required placeholder="you@college.edu"></label>
+<label>Game format<select id="m"><option>Solo — seat me anywhere</option><option>With my squad</option></select></label>
+<label>Pick your colour<span class="sw" id="sw"></span></label>
+<button class="btn" type="submit">Get my boarding pass →</button></form></div>
+<div><div class="ph panel" id="ph">Your pass appears here.<br>Fill the form and press the button.</div>
+<div class="pass" id="pass"><div class="row"><svg class="crew" id="pc"><use href="#cm"/></svg><div><div class="tag">Boarding pass · Event 001</div><h3 id="pn"></h3><p style="margin:6px 0">28 NOV 2026 · 19:00 IST<br>Online + Discord</p><code id="pid"></code></div></div></div></div>
+</div></section>
+
+<section id="faq"><div class="tag">05 · Comms</div><h2>Questions?</h2>
+<details><summary>Do I need to own Among Us?</summary><p>Yes — install the game on phone or PC before the event. Entry to our night is free; the game is separate.</p></details>
+<details><summary>Can I choose my role?</summary><p>No. The game picks it each round. Your colour on the pass is just for style.</p></details>
+<details><summary>What if I’ve never played?</summary><p>Perfect. We start with a briefing and a practice round.</p></details>
+<details><summary>Where do I get the Discord link?</summary><p>Registered crew receive it before the event. Check your inbox the day before.</p></details>
+</section>
+<footer>A web design assignment for SPARK. Unofficial fan project — Among Us belongs to Innersloth.</footer>
+
+<div id="meet"><div class="mt"><button class="x" id="cx" aria-label="Close">×</button><div class="tag">Emergency meeting called</div><h2>Who’s sus?</h2><p style="color:var(--mut);margin:0 0 18px">Discuss. Then vote for one crewmate.</p><div class="votes" id="mv"></div><div id="ej"></div></div></div>
+
+<script>
+// stars
+const cv=document.getElementById('stars'),cx=cv.getContext('2d');let S=[];
+function rs(){cv.width=innerWidth;cv.height=innerHeight;S=Array.from({length:150},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.6+.3,v:Math.random()*.4+.1}))}
+rs();addEventListener('resize',rs);
+(function t(){cx.clearRect(0,0,cv.width,cv.height);cx.fillStyle='#fff';for(const s of S){s.x-=s.v;if(s.x<0)s.x=cv.width;cx.globalAlpha=.4+s.r/3;cx.beginPath();cx.arc(s.x,s.y,s.r,0,7);cx.fill()}requestAnimationFrame(t)})();
+// countdown
+const T=new Date('2026-11-28T19:00:00+05:30');
+setInterval(()=>{let d=Math.max(0,T-Date.now())/1e3,v=[d/86400,d/3600%24,d/60%60,d%60].map(x=>String(Math.floor(x)).padStart(2,'0'));document.querySelectorAll('#cd b').forEach((b,i)=>b.textContent=v[i])},1000);
+// crew
+const C=[['Red','#f45858'],['Blue','#67c9f5'],['Yellow','#ffd166'],['Green','#8dd982'],['Purple','#b8a5f5'],['Orange','#ff9f5a']];
+const mk=(c,n)=>`<svg viewBox="0 0 100 120" style="color:${c}"><use href="#cm"/></svg>${n}`;
+function votes(id,fn){const el=document.getElementById(id);C.slice(0,4).forEach(([n,c])=>{const b=document.createElement('button');b.innerHTML=mk(c,n);b.onclick=()=>fn(n,c);el.appendChild(b)})}
+// eject
+const ej=document.getElementById('ej');
+function eject(n,c){const imp=Math.random()<.5;ej.style.display='block';
+ej.innerHTML=`<svg class="fl" viewBox="0 0 100 120" style="color:${c}"><use href="#cm"/></svg><p style="color:${imp?'var(--red)':'var(--grn)'}">${n} ${imp?'was An Impostor.':'was not An Impostor.'}</p>`;}
+votes('vv',(n,c)=>{document.getElementById('meet').classList.add('on');document.getElementById('mv').style.display='none';eject(n,c)});
+votes('mv',eject);
+const meet=document.getElementById('meet');
+function openM(){document.getElementById('mv').style.display='grid';ej.style.display='none';const s=document.getElementById('siren');s.classList.remove('on');void s.offsetWidth;s.classList.add('on');setTimeout(()=>meet.classList.add('on'),900)}
+document.getElementById('mbtn').onclick=openM;document.getElementById('cx').onclick=()=>meet.classList.remove('on');
+document.addEventListener('keydown',e=>e.key==='Escape'&&meet.classList.remove('on'));
+// wires
+const W=document.getElementById('wires'),wc=['#f45858','#ffd166','#67c9f5'],ro=[2,0,1];let sel=null,done=0;
+const ns='http://www.w3.org/2000/svg',el=(t,a)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);W.appendChild(e);return e};
+wc.forEach((c,i)=>{const y=40+i*60;const L=el('circle',{cx:30,cy:y,r:12,fill:c,stroke:'#fff','stroke-width':2});L.onclick=()=>{sel=i;document.getElementById('ws').textContent='Now tap the matching colour →'};
+const R=el('circle',{cx:290,cy:40+ro.indexOf(i)*60,r:12,fill:c,stroke:'#fff','stroke-width':2});R.onclick=()=>{if(sel===null)return;
+if(sel===i&&!R.dataset.d){R.dataset.d=1;el('path',{d:`M30 ${y} C150 ${y} 170 ${40+ro.indexOf(i)*60} 290 ${40+ro.indexOf(i)*60}`,stroke:c,'stroke-width':6,fill:'none','stroke-linecap':'round'});done++;document.getElementById('ws').textContent=done==3?'✔ Task complete! Nice work, crewmate.':done+' / 3 connected'}else document.getElementById('ws').textContent='✖ Wrong wire. Sus.';sel=null}});
+// form
+let col='#f45858';const sw=document.getElementById('sw');
+C.forEach(([n,c],i)=>{const b=document.createElement('button');b.type='button';b.title=n;b.style.setProperty('--k',c);if(!i)b.className='on';b.onclick=()=>{col=c;sw.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on')};sw.appendChild(b)});
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const n=document.getElementById('n').value.trim();
+document.getElementById('pn').textContent=n;document.getElementById('pc').style.color=col;
+document.getElementById('pid').textContent='CREW-ID: '+Math.random().toString(36).slice(2,8).toUpperCase();
+document.getElementById('ph').style.display='none';document.getElementById('pass').classList.add('show')};
+</script></body></html>
